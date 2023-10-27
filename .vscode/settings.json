@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "files.associations": {
+    "*.tsx": "javascriptreact"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
