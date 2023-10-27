@@ -9,5 +9,3 @@ Launch the app locally with
 ```
 npm run dev
 ```
-
-
