@@ -1,10 +1,7 @@
-/* Components */
-import { Counter } from "./components/Counter/Counter";
-
 export default function IndexPage() {
-  return <Counter />;
+  return <div>Root page</div>;
 }
 
 export const metadata = {
-  title: "Redux Toolkit",
+  title: "Ab Yritys Oy",
 };
