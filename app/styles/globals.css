@@ -1,9 +1,17 @@
+:root {
+  --header-height: 150px;
+}
+
 html,
 body {
   min-height: 100vh;
   padding: 0;
   margin: 0;
   font-family: system-ui, sans-serif;
+}
+
+main {
+  height: calc(100vh - var(--header-height));
 }
 
 a {
