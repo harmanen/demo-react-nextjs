@@ -39,7 +39,7 @@ This should preferably be in some project management system e.g. Jira.
 
 #### Page header
 
-- A text "Ab Yritys Oy" on the left side of the section.
+- ~~A text "Ab Yritys Oy" on the left side of the section.~~
 - **Dependency to Order page header**
   - Sync using Redux
 
