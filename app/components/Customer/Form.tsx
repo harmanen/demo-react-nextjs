@@ -1,11 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { TextField, Button, FormLabel } from "@mui/material";
+import {
+  TextField,
+  Button,
+  FormLabel,
+  Snackbar,
+  Alert,
+  AlertTitle,
+} from "@mui/material";
 import styles from "./form.module.css";
 
 const Header = () => {
   const [customerNumber, setCustomerNumber] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -14,11 +23,18 @@ const Header = () => {
       method: "GET",
     });
 
-    console.log(await response.json());
+    const initialData = await response.json();
+
+    // If there is an error, display a snackbar
+    if (initialData.error) {
+      setIsError(true);
+      setError(initialData.error);
+    }
   };
 
   return (
     <div className={styles.container}>
+      {/* Form */}
       <form onSubmit={handleSubmit}>
         <FormLabel>Customer Number</FormLabel>
         <div className={styles.input}>
@@ -38,6 +54,22 @@ const Header = () => {
           </Button>
         </div>
       </form>
+
+      {/* Error snackbar */}
+      <Snackbar
+        open={isError}
+        autoHideDuration={6000}
+        onClose={() => setIsError(false)}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert
+          severity="error"
+          sx={{ fontSize: 24 }}
+        >
+          <AlertTitle>Error</AlertTitle>
+          {error}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
