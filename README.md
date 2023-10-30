@@ -31,7 +31,7 @@ This should preferably be in some project management system e.g. Jira.
 ### Main requiremenets
 
 - Page header
-- Landing page
+- ~~Landing page~~
 - Order page
 - Snackbars
 
@@ -41,14 +41,14 @@ This should preferably be in some project management system e.g. Jira.
 
 - ~~A text "Ab Yritys Oy" on the left side of the section.~~
 - **Dependency to Order page header**
-  - Sync using Redux
+  - ~~Sync using Redux~~
 
 #### Landing page
 
 - ~~A form input for "Customer Number" and a button "Continue"~~
 - ~~An error message if the customer number does not result to anything.~~
   - ~~**Dependecy to Snackbar**~~
-- **Redirect to Order page**
+- ~~**Redirect to Order page**~~
 
 #### Order page
 
