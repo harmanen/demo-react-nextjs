@@ -1,3 +1,17 @@
 .container {
   display: flex;
+  flex-direction: column;
+  min-width: 500px;
+  padding-top: 5rem;
+}
+
+.text,
+.input,
+.button {
+  width: 100%;
+}
+
+.button {
+  text-align: right;
+  padding-top: 1.5rem
 }
