@@ -1,3 +1,5 @@
+import { customerSlice } from "./slices";
+
 export const reducer = {
-  // Reducers from slices here
+  customer: customerSlice.reducer,
 };
