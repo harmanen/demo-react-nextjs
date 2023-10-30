@@ -14,6 +14,16 @@ npm run dev
 
 This project uses ESLint and Prettier and is configured to format code on save/paste when VSCode is used with recommended extensions. This _should_ work out-of-the box but is not verified on another machine.
 
+### Troubleshoot
+
+If you see the following error with e.g. `React.PropsWithChildren` or any other import 
+
+```
+Type annotations can only be used in TypeScript files.ts(8010)
+```
+
+disable the builtin extension _TypeScript and JavaScript Language Features_ - this does not disable ESLint.
+
 ## Requirements
 
 This should preferably be in some project management system e.g. Jira.
