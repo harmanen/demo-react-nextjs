@@ -28,16 +28,16 @@ const Header = () => {
       method: "GET",
     });
 
-    const initialData = await response.json();
+    const customerData = await response.json();
 
     // If there is an error, display a snackbar...
-    if (initialData.error) {
+    if (customerData.error) {
       setIsError(true);
-      setError(initialData.error);
+      setError(customerData.error);
     } else {
       // ...otherwise update Redux state with customer data and redirect
-      router.push(`/customer/${initialData.user}`);
-      dispatch(customerSlice.actions.setCustomerData(initialData));
+      router.push(`/customer/${customerData.user}`);
+      dispatch(customerSlice.actions.setCustomerData(customerData));
     }
   };
 
