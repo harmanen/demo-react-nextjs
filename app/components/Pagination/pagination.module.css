@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+
+.buttonContainer,
+.page,
+.amount {
+  display: flex;
+  width: 33%;
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding-top: 2rem
+}
+
+.buttonContainer {
+  justify-content: flex-start;
+}
+
+.page {
+  justify-content: center;
+}
+
+.amount{
+  justify-content: flex-end;
+}
