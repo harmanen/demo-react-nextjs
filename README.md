@@ -54,14 +54,14 @@ This should preferably be in some project management system e.g. Jira.
 
 - Header: A text "Total: X XXX,XX €" (formatted total sum of the selected products using a space as a thousand separator and a comma as a decimal separator) and a button "Order" on the right side of the section.
   - The "Order" button must be disabled if the order status is "ordered".
-- Product listing: Show 6 selectable product cards per page. Each card must contain the following: image, name, description, rating (stars X out of 5), price (format: XX,XX €), and a ✓ check mark indicating selection.
-  - Additionally, show the following in the top right corner of the image:
-    - If a product has an index divisible by 3, then show a 👍 thumbs up emoji.
-    - If a product has an index divisible by 5, then show a 💖 sparkling heart emoji.
-    - If a product has an index divisible by 3 and 5, then show a 😍 heart eyes emoji.
-    - Else show a number (index + 1), for example #1 for the first card.
+- ~~Product listing: Show 6 selectable product cards per page. Each card must contain the following: image, name description, rating (stars X out of 5), price (format: XX,XX €), and a ✓ check mark indicating selection.~~
+  - ~~Additionally, show the following in the top right corner of the image:~~
+    - ~~If a product has an index divisible by 3, then show a 👍 thumbs up emoji.~~
+    - ~~If a product has an index divisible by 5, then show a 💖 sparkling heart emoji.~~
+    - ~~If a product has an index divisible by 3 and 5, then show a 😍 heart eyes emoji.~~
+    - ~~Else show a number (index + 1), for example #1 for the first card.~~
 
-- A product listing pagination with buttons "Previous" and "Next" and a text indicating the total amount of products and pages (XX products, page X out of Y).
+- A product listing pagination with ~~buttons "Previous" and "Next" and a text indicating the total amount of products and pages (XX products, page X out of Y).~~
 - An error message if the submission (place order) fails.
   - **Dependecy to Snackbar**
 - A success message if the submission (place order) succeeds.
