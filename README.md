@@ -61,7 +61,7 @@ This should preferably be in some project management system e.g. Jira.
     - ~~If a product has an index divisible by 3 and 5, then show a 😍 heart eyes emoji.~~
     - ~~Else show a number (index + 1), for example #1 for the first card.~~
 
-- A product listing pagination with ~~buttons "Previous" and "Next" and a text indicating the total amount of products and pages (XX products, page X out of Y).~~
+- ~~A product listing pagination with buttons "Previous" and "Next" and a text indicating the total amount of products and pages (XX products, page X out of Y).~~
 - An error message if the submission (place order) fails.
   - **Dependecy to Snackbar**
 - A success message if the submission (place order) succeeds.
