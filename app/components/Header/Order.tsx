@@ -69,7 +69,7 @@ const Order = () => {
   return (
     <div className={styles.container}>
       <div className={styles.textContainer}>
-        <div className={styles.sum}>{total}</div>
+        <div className={styles.sum}>{`Total: ${total}`}</div>
         <div className={styles.status}>
           {isOrdered ? "Ordered" : "Not ordered"}
         </div>
