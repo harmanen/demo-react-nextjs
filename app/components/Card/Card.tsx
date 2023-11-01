@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import PropTypes from "prop-types";
 import {
   useDispatch,
@@ -21,18 +20,12 @@ const Card = ({ data, index }) => {
   const selectedProducts = useSelector(selectProducts);
   const dispatch = useDispatch();
 
-  const [isChecked, setIsChecked] = useState(
-    selectedProducts?.includes(data.id),
-  );
-
   const handleClickCard = () => {
-    if (isChecked) {
+    if (selectedProducts.includes(data.id)) {
       dispatch(productSlice.actions.removeProduct(data.id));
     } else {
       dispatch(productSlice.actions.addProduct(data.id));
     }
-
-    setIsChecked(!isChecked);
   };
 
   let icon;
@@ -64,7 +57,9 @@ const Card = ({ data, index }) => {
         <CardContent>
           <div className={styles.nameContainer}>
             <h3>{data.name}</h3>
-            {isChecked && <div className={styles.checked}>✓</div>}
+            {selectedProducts.includes(data.id) && (
+              <div className={styles.checked}>✓</div>
+            )}
           </div>
           <div className={styles.description}>{data.description}</div>
           <Rating
