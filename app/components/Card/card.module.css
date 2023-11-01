@@ -10,7 +10,13 @@
 }
 
 .description {
-  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  /* Truncate to 4 lines  */
+  min-height: calc(4 * 0.9rem);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .amount {
