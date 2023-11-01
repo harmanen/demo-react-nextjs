@@ -20,7 +20,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
   useEffect(() => {
     if (
-      customer.data[0].status === "ordered" &&
+      customer.data[0]?.status === "ordered" &&
       selectedProducts.length === 0
     ) {
       customer.data[0].products.forEach((item) => {
