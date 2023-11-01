@@ -4,7 +4,7 @@ import { BASE_URL } from "../../constants";
 export async function POST(req: NextApiRequest) {
   const body = await req.json();
 
-  const response = await fetch(`${BASE_URL}v1/bakry`, {
+  const response = await fetch(`${BASE_URL}v1/bakery`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

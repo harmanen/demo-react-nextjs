@@ -75,7 +75,7 @@ const Header = () => {
           severity="error"
           sx={{ fontSize: 24 }}
         >
-          <AlertTitle>Error</AlertTitle>
+          <AlertTitle>ERROR</AlertTitle>
           {error}
         </Alert>
       </Snackbar>

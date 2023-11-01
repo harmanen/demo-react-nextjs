@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   useDispatch,
   useSelector,
@@ -7,7 +8,7 @@ import {
   customerSlice,
 } from "@/lib/redux";
 import styles from "./order.module.css";
-import { Button } from "@mui/material";
+import { Button, Snackbar, Alert, AlertTitle } from "@mui/material";
 
 const Order = () => {
   // Format total amount
@@ -16,9 +17,25 @@ const Order = () => {
     currency: "EUR",
   }).format(useSelector(selectTotal));
 
+  // Redux
   const dispatch = useDispatch();
   const { data, user } = useSelector(selectCustomer);
   const selectedProducts = useSelector(selectProducts);
+
+  // Component state (snackbar)
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "",
+  });
+
+  const handleCloseSnackbar = () => {
+    setSnackbar({
+      open: false,
+      message: "",
+      severity: "",
+    });
+  };
 
   const isOrdered = data[0]?.status === "ordered";
 
@@ -34,10 +51,18 @@ const Order = () => {
     const responseData = await response.json();
 
     if (responseData?.error) {
-      // Error snackbar
+      setSnackbar({
+        open: true,
+        message: responseData.error,
+        severity: "error",
+      });
     } else {
-      // Success snackbar
       dispatch(customerSlice.actions.updateCustomerData(responseData));
+      setSnackbar({
+        open: true,
+        message: "Order placement succeeded!",
+        severity: "success",
+      });
     }
   };
 
@@ -59,6 +84,22 @@ const Order = () => {
           Order
         </Button>
       </div>
+
+      {/* Snackbars */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert
+          severity={snackbar.severity || "info"}
+          sx={{ fontSize: 24 }}
+        >
+          <AlertTitle>{snackbar.severity.toUpperCase()}</AlertTitle>
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
