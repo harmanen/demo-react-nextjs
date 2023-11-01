@@ -4,13 +4,14 @@ import PropTypes from "prop-types";
 import { Button } from "@mui/material";
 import { useEffect } from "react";
 import styles from "./pagination.module.css";
+import { BASE_URL, PRODUCTS_PER_PAGE } from "../../constants";
 
 const Pagination = (props: { props: { customer: number } }) => {
   useEffect(() => {
     // Set initial state if there are no products
     if (Object.keys(props.productsData).length === 0) {
       fetch(
-        `https://bakery-3c739d39.digi.loikka.dev/v1/bakery/products?customerNumber=${props.customer}&skip=0&limit=6`,
+        `${BASE_URL}v1/bakery/products?customerNumber=${props.customer}&skip=0&limit=${PRODUCTS_PER_PAGE}`,
       )
         .then((response) => response.json())
         .then((data) => props.setProductsData(data));

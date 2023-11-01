@@ -1,11 +1,10 @@
 import type { NextApiRequest } from "next";
+import { BASE_URL } from "../../constants";
 
 export async function GET(req: NextApiRequest) {
   const id = req.nextUrl.searchParams.get("id");
 
-  const response = await fetch(
-    `https://bakery-3c739d39.digi.loikka.dev/v1/bakery?customerNumber=${id}`,
-  );
+  const response = await fetch(`${BASE_URL}v1/bakery?customerNumber=${id}`);
 
   const { data, metadata } = await response.json();
 
