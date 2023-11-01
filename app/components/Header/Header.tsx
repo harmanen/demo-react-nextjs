@@ -8,7 +8,7 @@ const Header = () => {
 
   return (
     <div className={styles.container}>
-      <h1>Oy Pulju AB</h1>
+      <h1>Ab Yritys Oy</h1>
       {customer?.user && <Order />}
     </div>
   );
