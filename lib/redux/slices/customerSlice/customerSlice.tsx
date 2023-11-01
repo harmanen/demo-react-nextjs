@@ -14,5 +14,8 @@ export const customerSlice = createSlice({
       state = action.payload;
       return state;
     },
+    updateCustomerData: (state, action: PayloadAction) => {
+      return { ...state, ...action.payload };
+    },
   },
 });

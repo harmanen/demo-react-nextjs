@@ -1,4 +1,11 @@
-import { useSelector, selectTotal, selectCustomer } from "@/lib/redux";
+import {
+  useDispatch,
+  useSelector,
+  selectTotal,
+  selectCustomer,
+  selectProducts,
+  customerSlice,
+} from "@/lib/redux";
 import styles from "./order.module.css";
 import { Button } from "@mui/material";
 
@@ -9,8 +16,30 @@ const Order = () => {
     currency: "EUR",
   }).format(useSelector(selectTotal));
 
-  const { data } = useSelector(selectCustomer);
+  const dispatch = useDispatch();
+  const { data, user } = useSelector(selectCustomer);
+  const selectedProducts = useSelector(selectProducts);
+
   const isOrdered = data[0]?.status === "ordered";
+
+  const handleClickOrder = async () => {
+    const response = await fetch("/api/order", {
+      method: "POST",
+      body: JSON.stringify({
+        customerNumber: user,
+        products: selectedProducts,
+      }),
+    });
+
+    const responseData = await response.json();
+
+    if (responseData?.error) {
+      // Error snackbar
+    } else {
+      // Success snackbar
+      dispatch(customerSlice.actions.updateCustomerData(responseData));
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -23,7 +52,7 @@ const Order = () => {
       <div className={styles.buttonContainer}>
         <Button
           variant="contained"
-          onClick={() => alert("TBD")}
+          onClick={handleClickOrder}
           style={{ height: "fit-content" }}
           disabled={isOrdered}
         >
