@@ -13,16 +13,16 @@ export const productSlice = createSlice({
       return {
         ...state,
         selectedProducts: [...state.selectedProducts, action.payload.product],
-        total: state.total + action.payload.amount,
+        total: Math.round((state.total + action.payload.amount) * 100) / 100, // 2 decimals
       };
     },
     removeProduct: (state, action: PayloadAction) => {
       return {
         ...state,
         selectedProducts: state.selectedProducts.filter(
-          (product) => product !== action.payload.products,
+          (product) => product !== action.payload.product,
         ),
-        total: state.total - action.payload.amount,
+        total: Math.round((state.total - action.payload.amount) * 100) / 100, // 2 decimals
       };
     },
   },
