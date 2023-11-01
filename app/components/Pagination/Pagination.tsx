@@ -2,11 +2,14 @@
 
 import PropTypes from "prop-types";
 import { Button } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "./pagination.module.css";
 import { BASE_URL, PRODUCTS_PER_PAGE } from "../../constants";
 
 const Pagination = (props: { props: { customer: number } }) => {
+  const [page, setPage] = useState(1); // Current page
+  const [maxPage, setMaxPage] = useState(1); // Page limit
+
   useEffect(() => {
     // Set initial state if there are no products
     if (Object.keys(props.productsData).length === 0) {
@@ -14,9 +17,22 @@ const Pagination = (props: { props: { customer: number } }) => {
         `${BASE_URL}v1/bakery/products?customerNumber=${props.customer}&skip=0&limit=${PRODUCTS_PER_PAGE}`,
       )
         .then((response) => response.json())
-        .then((data) => props.setProductsData(data));
+        .then((data) => {
+          // Pass data to page
+          props.setProductsData(data);
+          // Set max number of pages based on metadata
+          setMaxPage(Math.round(data.metadata.total / data.metadata.limit));
+        });
     }
   });
+
+  const handleClickNext = () => {
+    setPage(page + 1);
+  };
+
+  const handleClickPrevious = () => {
+    setPage(page - 1);
+  };
 
   return (
     // Display pagination only if metadata exists
@@ -26,17 +42,20 @@ const Pagination = (props: { props: { customer: number } }) => {
           <Button
             variant="contained"
             style={{ marginRight: "1rem" }}
+            disabled={page <= 1}
+            onClick={handleClickPrevious}
           >
             ⟪ Previous
           </Button>
-          <Button variant="contained">Next ⟫</Button>
+          <Button
+            variant="contained"
+            disabled={page >= maxPage}
+            onClick={handleClickNext}
+          >
+            Next ⟫
+          </Button>
         </div>
-        <div className={styles.page}>{`Page ${
-          1 +
-          props.productsData.metadata.skip / props.productsData.metadata.limit
-        } / ${
-          props.productsData.metadata.total / props.productsData.metadata.limit
-        }`}</div>
+        <div className={styles.page}>{`Page ${page} / ${maxPage}`}</div>
         <div className={styles.amount}>
           Total {props.productsData.metadata.total} products
         </div>
