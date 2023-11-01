@@ -22,9 +22,19 @@ const Card = ({ data, index }) => {
 
   const handleClickCard = () => {
     if (selectedProducts.includes(data.id)) {
-      dispatch(productSlice.actions.removeProduct(data.id));
+      dispatch(
+        productSlice.actions.removeProduct({
+          product: data.id,
+          amount: data.amount,
+        }),
+      );
     } else {
-      dispatch(productSlice.actions.addProduct(data.id));
+      dispatch(
+        productSlice.actions.addProduct({
+          product: data.id,
+          amount: data.amount,
+        }),
+      );
     }
   };
 
