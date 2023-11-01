@@ -3,6 +3,12 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import {
+  useDispatch,
+  useSelector,
+  productSlice,
+  selectProducts,
+} from "@/lib/redux";
+import {
   Card as MUICard,
   CardActionArea,
   CardMedia,
@@ -12,7 +18,22 @@ import {
 import styles from "./card.module.css";
 
 const Card = ({ data, index }) => {
-  const [isChecked, setIsChecked] = useState(false);
+  const selectedProducts = useSelector(selectProducts);
+  const dispatch = useDispatch();
+
+  const [isChecked, setIsChecked] = useState(
+    selectedProducts?.includes(data.id),
+  );
+
+  const handleClickCard = () => {
+    if (isChecked) {
+      dispatch(productSlice.actions.removeProduct(data.id));
+    } else {
+      dispatch(productSlice.actions.addProduct(data.id));
+    }
+
+    setIsChecked(!isChecked);
+  };
 
   let icon;
 
@@ -33,7 +54,7 @@ const Card = ({ data, index }) => {
       sx={{ maxWidth: "100%", maxHeight: "400px" }}
       variant="outlined"
     >
-      <CardActionArea onClick={() => setIsChecked(!isChecked)}>
+      <CardActionArea onClick={handleClickCard}>
         <CardMedia
           component="img"
           height="200"
