@@ -1,11 +1,17 @@
+import { useSelector, selectTotal } from "@/lib/redux";
 import styles from "./order.module.css";
 import { Button } from "@mui/material";
 
 const Order = () => {
+  const total = new Intl.NumberFormat("fi-FI", {
+    style: "currency",
+    currency: "EUR",
+  }).format(useSelector(selectTotal));
+
   return (
     <div className={styles.container}>
       <div className={styles.textContainer}>
-        <div className={styles.sum}>XXXXXX</div>
+        <div className={styles.sum}>{total}</div>
         <div className={styles.status}>isOrdered</div>
       </div>
       <div className={styles.buttonContainer}>
