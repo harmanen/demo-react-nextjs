@@ -41,6 +41,16 @@ const Pagination = (props: { props: { customer: number } }) => {
   };
 
   const handleClickPrevious = () => {
+    fetch(
+      `${BASE_URL}v1/bakery/products?customerNumber=${props.customer}&skip=${
+        (page - 2) * PRODUCTS_PER_PAGE
+      }&limit=${PRODUCTS_PER_PAGE}`,
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        props.setProductsData(data);
+      });
+
     setPage(page - 1);
   };
 
