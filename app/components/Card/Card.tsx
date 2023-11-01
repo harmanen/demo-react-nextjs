@@ -6,6 +6,7 @@ import {
   useSelector,
   productSlice,
   selectProducts,
+  selectCustomer,
 } from "@/lib/redux";
 import {
   Card as MUICard,
@@ -18,7 +19,10 @@ import styles from "./card.module.css";
 
 const Card = ({ data, index }) => {
   const selectedProducts = useSelector(selectProducts);
+  const customer = useSelector(selectCustomer);
   const dispatch = useDispatch();
+
+  const isOrdered = customer.data[0]?.status === "ordered";
 
   const handleClickCard = () => {
     if (selectedProducts.includes(data.id)) {
@@ -57,7 +61,8 @@ const Card = ({ data, index }) => {
       sx={{ maxWidth: "100%", maxHeight: "400px" }}
       variant="outlined"
     >
-      <CardActionArea onClick={handleClickCard}>
+      {/* Hacky disable... */}
+      <CardActionArea onClick={isOrdered ? null : handleClickCard}>
         <CardMedia
           component="img"
           height="200"
