@@ -30,17 +30,17 @@ This should preferably be in some project management system e.g. Jira.
 
 ### Main requiremenets
 
-- Page header
+- ~~Page header~~
 - ~~Landing page~~
-- Order page
-- Snackbars
+- ~~Order page~~
+- ~~Snackbars~~
 
 ### Tasks
 
 #### Page header
 
 - ~~A text "Ab Yritys Oy" on the left side of the section.~~
-- **Dependency to Order page header**
+- ~~**Dependency to Order page header**~~
   - ~~Sync using Redux~~
 
 #### Landing page
@@ -52,8 +52,8 @@ This should preferably be in some project management system e.g. Jira.
 
 #### Order page
 
-- Header: A text "Total: X XXX,XX €" (formatted total sum of the selected products using a space as a thousand separator and a comma as a decimal separator) and a button "Order" on the right side of the section.
-  - The "Order" button must be disabled if the order status is "ordered".
+- ~~Header: A text "Total: X XXX,XX €" (formatted total sum of the selected products using a space as a thousand separator and a comma as a decimal separator) and a button "Order" on the right side of the section.~~
+  - ~~The "Order" button must be disabled if the order status is "ordered".~~
 - ~~Product listing: Show 6 selectable product cards per page. Each card must contain the following: image, name description, rating (stars X out of 5), price (format: XX,XX €), and a ✓ check mark indicating selection.~~
   - ~~Additionally, show the following in the top right corner of the image:~~
     - ~~If a product has an index divisible by 3, then show a 👍 thumbs up emoji.~~
@@ -62,14 +62,14 @@ This should preferably be in some project management system e.g. Jira.
     - ~~Else show a number (index + 1), for example #1 for the first card.~~
 
 - ~~A product listing pagination with buttons "Previous" and "Next" and a text indicating the total amount of products and pages (XX products, page X out of Y).~~
-- An error message if the submission (place order) fails.
-  - **Dependecy to Snackbar**
-- A success message if the submission (place order) succeeds.
-  - **Dependecy to Snackbar**
-- Show the order status (not ordered or ordered) and the selected products in the same view. The customer cannot change the selected products or place a new order, if the order status is "ordered".
+- ~~An error message if the submission (place order) fails.~~
+  - ~~**Dependecy to Snackbar**~~
+- ~~A success message if the submission (place order) succeeds.~~
+  - ~~**Dependecy to Snackbar**~~
+- ~~Show the order status (not ordered or ordered) and the selected products in the same view. The customer cannot change the selected products or place a new order, if the order status is "ordered".~~
 
 #### Snackbars
 
 - ~~Customer number not found~~
-- Order placement succeeded
-- Order placement failed
+- ~~Order placement succeeded~~
+- ~~Order placement failed~~
