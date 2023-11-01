@@ -83,8 +83,10 @@ const Card = ({ data, index }) => {
             readOnly
           />
           <div className={styles.amount}>
-            {data.amount}
-            {data.currency === "eur" ? " €" : " ?"}
+            {new Intl.NumberFormat("fi-FI", {
+              style: "currency",
+              currency: "EUR",
+            }).format(data.amount)}
           </div>
           <div className={styles.icon}>{icon}</div>
         </CardContent>
